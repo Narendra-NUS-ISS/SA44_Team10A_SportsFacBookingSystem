@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="093a348ff9f943429d981ccb5e4cbd9b" Name="Diagram1">
+        <EntityTypeShape EntityType="SA44_Team10A_SportsFacBookingSystemModel.BookingTransaction" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SA44_Team10A_SportsFacBookingSystemModel.Facility" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SA44_Team10A_SportsFacBookingSystemModel.Member" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SA44_Team10A_SportsFacBookingSystemModel.User" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="SA44_Team10A_SportsFacBookingSystemModel.FK_BookingTransaction_Facility" ManuallyRouted="false" />
+        <AssociationConnector Association="SA44_Team10A_SportsFacBookingSystemModel.FK_BookingTransaction_Members" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
