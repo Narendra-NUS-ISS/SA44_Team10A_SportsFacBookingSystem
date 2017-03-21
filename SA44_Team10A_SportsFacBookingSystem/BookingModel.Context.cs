@@ -12,6 +12,8 @@ namespace SA44_Team10A_SportsFacBookingSystem
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BookingSystemEntities : DbContext
     {
@@ -29,5 +31,18 @@ namespace SA44_Team10A_SportsFacBookingSystem
         public virtual DbSet<Facility> Facilities { get; set; }
         public virtual DbSet<Member> Members { get; set; }
         public virtual DbSet<User> Users { get; set; }
+    
+        public virtual ObjectResult<SlotAvailability_Procedure_Result> SlotAvailability_Procedure(Nullable<System.DateTime> slotDate, string location)
+        {
+            var slotDateParameter = slotDate.HasValue ?
+                new ObjectParameter("slotDate", slotDate) :
+                new ObjectParameter("slotDate", typeof(System.DateTime));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("location", location) :
+                new ObjectParameter("location", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SlotAvailability_Procedure_Result>("SlotAvailability_Procedure", slotDateParameter, locationParameter);
+        }
     }
 }
