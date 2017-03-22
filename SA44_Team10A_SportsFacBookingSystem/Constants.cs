@@ -9,5 +9,6 @@ namespace SA44_Team10A_SportsFacBookingSystem
    static class Constants
     {
         public static String READY = "Ready";
+        public static int COLUMN_COUNT = 18;
     }
 }

@@ -63,7 +63,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="SlotAvailability_Procedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="SlotAvailabilityStructureTemplate_Procedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="slotDate" Type="datetime" Mode="In" />
+          <Parameter Name="location" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SlotAvailStructureTemplate_Procedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="slotDate" Type="datetime" Mode="In" />
           <Parameter Name="location" Type="nvarchar" Mode="In" />
         </Function>
@@ -164,6 +168,34 @@
             <Parameter Name="slotDate" Mode="In" Type="DateTime" />
             <Parameter Name="location" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="UnAvailabileSlot_Procedure" ReturnType="Collection(SA44_Team10A_SportsFacBookingSystemModel.UnAvailabileSlot_Procedure_Result)">
+            <Parameter Name="facilityName" Mode="In" Type="String" />
+            <Parameter Name="location" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UnAvailabileSlot_Procedure1" ReturnType="Collection(SA44_Team10A_SportsFacBookingSystemModel.UnAvailabileSlot_Procedure1_Result)">
+            <Parameter Name="facilityName" Mode="In" Type="String" />
+            <Parameter Name="location" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BlankSlot_Procedure" ReturnType="Collection(SA44_Team10A_SportsFacBookingSystemModel.BlankSlot_Procedure_Result)">
+            <Parameter Name="facilityName" Mode="In" Type="String" />
+            <Parameter Name="location" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BlankSlotStructure_Procedure" ReturnType="Collection(SA44_Team10A_SportsFacBookingSystemModel.BlankSlotStructure_Procedure_Result)">
+            <Parameter Name="facilityName" Mode="In" Type="String" />
+            <Parameter Name="location" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SlotAvailabilityStructure_Procedure" ReturnType="Collection(SA44_Team10A_SportsFacBookingSystemModel.SlotAvailabilityStructure_Procedure_Result)">
+            <Parameter Name="slotDate" Mode="In" Type="DateTime" />
+            <Parameter Name="location" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SlotAvailabilityStructureTemplate_Procedure" ReturnType="Collection(SA44_Team10A_SportsFacBookingSystemModel.SlotAvailabilityStructureTemplate_Procedure_Result)">
+            <Parameter Name="slotDate" Mode="In" Type="DateTime" />
+            <Parameter Name="location" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SlotAvailStructureTemplate_Procedure" ReturnType="Collection(SA44_Team10A_SportsFacBookingSystemModel.SlotAvailStructureTemplate_Procedure_Result)">
+            <Parameter Name="slotDate" Mode="In" Type="DateTime" />
+            <Parameter Name="location" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SlotAvailability_Procedure_Result">
           <Property Type="String" Name="Location" Nullable="false" MaxLength="30" />
@@ -184,6 +216,153 @@
           <Property Type="String" Name="Slot15_20PM" Nullable="true" MaxLength="28" />
           <Property Type="String" Name="Slot16_21PM" Nullable="true" MaxLength="28" />
           <Property Type="String" Name="Slot17_22PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="FacilityName" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UnAvailabileSlot_Procedure_Result">
+          <Property Type="String" Name="Location" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="slot1" Nullable="false" />
+          <Property Type="Int32" Name="slot2" Nullable="false" />
+          <Property Type="Int32" Name="slot3" Nullable="false" />
+          <Property Type="Int32" Name="slot4" Nullable="false" />
+          <Property Type="Int32" Name="slot5" Nullable="false" />
+          <Property Type="Int32" Name="slot6" Nullable="false" />
+          <Property Type="Int32" Name="slot7" Nullable="false" />
+          <Property Type="Int32" Name="slot8" Nullable="false" />
+          <Property Type="Int32" Name="slot9" Nullable="false" />
+          <Property Type="Int32" Name="slot10" Nullable="false" />
+          <Property Type="Int32" Name="slot11" Nullable="false" />
+          <Property Type="Int32" Name="slot12" Nullable="false" />
+          <Property Type="Int32" Name="slot13" Nullable="false" />
+          <Property Type="Int32" Name="slot14" Nullable="false" />
+          <Property Type="Int32" Name="slot15" Nullable="false" />
+          <Property Type="Int32" Name="slot16" Nullable="false" />
+          <Property Type="Int32" Name="slot17" Nullable="false" />
+          <Property Type="String" Name="FacilityName" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UnAvailabileSlot_Procedure1_Result">
+          <Property Type="String" Name="Location" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="slot1" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot2" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot3" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot4" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot5" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot6" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot7" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot8" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot9" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot10" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot11" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot12" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot13" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot14" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot15" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot16" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot17" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="FacilityName" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="BlankSlot_Procedure_Result">
+          <Property Type="String" Name="Location" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="slot1" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot2" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot3" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot4" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot5" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot6" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot7" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot8" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot9" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot10" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot11" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot12" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot13" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot14" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot15" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot16" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="slot17" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="FacilityName" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="BlankSlotStructure_Procedure_Result">
+          <Property Type="String" Name="Location" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Slot_6AM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_7AM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_8AM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_9AM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_10AM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_11AM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_12AM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_13PM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_14PM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_15PM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_16PM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_17PM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_18PM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_19PM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_20PM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_21PM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Slot_22PM" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="FacilityName" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="SlotAvailabilityStructure_Procedure_Result">
+          <Property Type="String" Name="Location" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Slot_6AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_7AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_8AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_9AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_10AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_11AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_12AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_13PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_14PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_15PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_16PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_17PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_18PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_19PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_20PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_21PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_22PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="FacilityName" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="SlotAvailabilityStructureTemplate_Procedure_Result">
+          <Property Type="String" Name="Location" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Slot_6AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_7AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_8AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_9AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_10AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_11AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_12AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_13PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_14PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_15PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_16PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_17PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_18PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_19PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_20PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_21PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_22PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="FacilityName" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="SlotAvailStructureTemplate_Procedure_Result">
+          <Property Type="String" Name="Location" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Slot_6AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_7AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_8AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_9AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_10AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_11AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_12AM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_13PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_14PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_15PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_16PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_17PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_18PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_19PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_20PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_21PM" Nullable="true" MaxLength="28" />
+          <Property Type="String" Name="Slot_22PM" Nullable="true" MaxLength="28" />
           <Property Type="String" Name="FacilityName" Nullable="false" MaxLength="30" />
         </ComplexType>
       </Schema>
@@ -230,32 +409,57 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SlotAvailability_Procedure" FunctionName="SA44_Team10A_SportsFacBookingSystemModel.Store.SlotAvailability_Procedure">
+          <FunctionImportMapping FunctionImportName="SlotAvailabilityStructureTemplate_Procedure" FunctionName="SA44_Team10A_SportsFacBookingSystemModel.Store.SlotAvailabilityStructureTemplate_Procedure">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SA44_Team10A_SportsFacBookingSystemModel.SlotAvailability_Procedure_Result">
+              <ComplexTypeMapping TypeName="SA44_Team10A_SportsFacBookingSystemModel.SlotAvailabilityStructureTemplate_Procedure_Result">
                 <ScalarProperty Name="Location" ColumnName="Location" />
-                <ScalarProperty Name="Slot1_6AM" ColumnName="Slot1-6AM" />
-                <ScalarProperty Name="Slot2_7AM" ColumnName="Slot2-7AM" />
-                <ScalarProperty Name="Slot3_8AM" ColumnName="Slot3-8AM" />
-                <ScalarProperty Name="Slot4_9AM" ColumnName="Slot4-9AM" />
-                <ScalarProperty Name="Slot5_10AM" ColumnName="Slot5-10AM" />
-                <ScalarProperty Name="Slot6_11AM" ColumnName="Slot6-11AM" />
-                <ScalarProperty Name="Slot7_12AM" ColumnName="Slot7-12AM" />
-                <ScalarProperty Name="Slot8_13PM" ColumnName="Slot8-13PM" />
-                <ScalarProperty Name="Slot9_14PM" ColumnName="Slot9-14PM" />
-                <ScalarProperty Name="Slot10_15PM" ColumnName="Slot10-15PM" />
-                <ScalarProperty Name="Slot11_16PM" ColumnName="Slot11-16PM" />
-                <ScalarProperty Name="Slot12_17PM" ColumnName="Slot12-17PM" />
-                <ScalarProperty Name="Slot13_18PM" ColumnName="Slot13-18PM" />
-                <ScalarProperty Name="Slot14_19PM" ColumnName="Slot14-19PM" />
-                <ScalarProperty Name="Slot15_20PM" ColumnName="Slot15-20PM" />
-                <ScalarProperty Name="Slot16_21PM" ColumnName="Slot16-21PM" />
-                <ScalarProperty Name="Slot17_22PM" ColumnName="Slot17-22PM" />
+                <ScalarProperty Name="Slot_6AM" ColumnName="Slot-6AM" />
+                <ScalarProperty Name="Slot_7AM" ColumnName="Slot-7AM" />
+                <ScalarProperty Name="Slot_8AM" ColumnName="Slot-8AM" />
+                <ScalarProperty Name="Slot_9AM" ColumnName="Slot-9AM" />
+                <ScalarProperty Name="Slot_10AM" ColumnName="Slot-10AM" />
+                <ScalarProperty Name="Slot_11AM" ColumnName="Slot-11AM" />
+                <ScalarProperty Name="Slot_12AM" ColumnName="Slot-12AM" />
+                <ScalarProperty Name="Slot_13PM" ColumnName="Slot-13PM" />
+                <ScalarProperty Name="Slot_14PM" ColumnName="Slot-14PM" />
+                <ScalarProperty Name="Slot_15PM" ColumnName="Slot-15PM" />
+                <ScalarProperty Name="Slot_16PM" ColumnName="Slot-16PM" />
+                <ScalarProperty Name="Slot_17PM" ColumnName="Slot-17PM" />
+                <ScalarProperty Name="Slot_18PM" ColumnName="Slot-18PM" />
+                <ScalarProperty Name="Slot_19PM" ColumnName="Slot-19PM" />
+                <ScalarProperty Name="Slot_20PM" ColumnName="Slot-20PM" />
+                <ScalarProperty Name="Slot_21PM" ColumnName="Slot-21PM" />
+                <ScalarProperty Name="Slot_22PM" ColumnName="Slot-22PM" />
                 <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-        </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="SlotAvailStructureTemplate_Procedure" FunctionName="SA44_Team10A_SportsFacBookingSystemModel.Store.SlotAvailStructureTemplate_Procedure">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SA44_Team10A_SportsFacBookingSystemModel.SlotAvailStructureTemplate_Procedure_Result">
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Slot_6AM" ColumnName="Slot-6AM" />
+                <ScalarProperty Name="Slot_7AM" ColumnName="Slot-7AM" />
+                <ScalarProperty Name="Slot_8AM" ColumnName="Slot-8AM" />
+                <ScalarProperty Name="Slot_9AM" ColumnName="Slot-9AM" />
+                <ScalarProperty Name="Slot_10AM" ColumnName="Slot-10AM" />
+                <ScalarProperty Name="Slot_11AM" ColumnName="Slot-11AM" />
+                <ScalarProperty Name="Slot_12AM" ColumnName="Slot-12AM" />
+                <ScalarProperty Name="Slot_13PM" ColumnName="Slot-13PM" />
+                <ScalarProperty Name="Slot_14PM" ColumnName="Slot-14PM" />
+                <ScalarProperty Name="Slot_15PM" ColumnName="Slot-15PM" />
+                <ScalarProperty Name="Slot_16PM" ColumnName="Slot-16PM" />
+                <ScalarProperty Name="Slot_17PM" ColumnName="Slot-17PM" />
+                <ScalarProperty Name="Slot_18PM" ColumnName="Slot-18PM" />
+                <ScalarProperty Name="Slot_19PM" ColumnName="Slot-19PM" />
+                <ScalarProperty Name="Slot_20PM" ColumnName="Slot-20PM" />
+                <ScalarProperty Name="Slot_21PM" ColumnName="Slot-21PM" />
+                <ScalarProperty Name="Slot_22PM" ColumnName="Slot-22PM" />
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

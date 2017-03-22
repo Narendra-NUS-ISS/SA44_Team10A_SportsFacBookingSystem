@@ -44,5 +44,96 @@ namespace SA44_Team10A_SportsFacBookingSystem
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SlotAvailability_Procedure_Result>("SlotAvailability_Procedure", slotDateParameter, locationParameter);
         }
+    
+        public virtual ObjectResult<UnAvailabileSlot_Procedure_Result> UnAvailabileSlot_Procedure(string facilityName, string location)
+        {
+            var facilityNameParameter = facilityName != null ?
+                new ObjectParameter("facilityName", facilityName) :
+                new ObjectParameter("facilityName", typeof(string));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("location", location) :
+                new ObjectParameter("location", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UnAvailabileSlot_Procedure_Result>("UnAvailabileSlot_Procedure", facilityNameParameter, locationParameter);
+        }
+    
+        public virtual ObjectResult<UnAvailabileSlot_Procedure1_Result> UnAvailabileSlot_Procedure1(string facilityName, string location)
+        {
+            var facilityNameParameter = facilityName != null ?
+                new ObjectParameter("facilityName", facilityName) :
+                new ObjectParameter("facilityName", typeof(string));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("location", location) :
+                new ObjectParameter("location", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UnAvailabileSlot_Procedure1_Result>("UnAvailabileSlot_Procedure1", facilityNameParameter, locationParameter);
+        }
+    
+        public virtual ObjectResult<BlankSlot_Procedure_Result> BlankSlot_Procedure(string facilityName, string location)
+        {
+            var facilityNameParameter = facilityName != null ?
+                new ObjectParameter("facilityName", facilityName) :
+                new ObjectParameter("facilityName", typeof(string));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("location", location) :
+                new ObjectParameter("location", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BlankSlot_Procedure_Result>("BlankSlot_Procedure", facilityNameParameter, locationParameter);
+        }
+    
+        public virtual ObjectResult<BlankSlotStructure_Procedure_Result> BlankSlotStructure_Procedure(string facilityName, string location)
+        {
+            var facilityNameParameter = facilityName != null ?
+                new ObjectParameter("facilityName", facilityName) :
+                new ObjectParameter("facilityName", typeof(string));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("location", location) :
+                new ObjectParameter("location", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BlankSlotStructure_Procedure_Result>("BlankSlotStructure_Procedure", facilityNameParameter, locationParameter);
+        }
+    
+        public virtual ObjectResult<SlotAvailabilityStructure_Procedure_Result> SlotAvailabilityStructure_Procedure(Nullable<System.DateTime> slotDate, string location)
+        {
+            var slotDateParameter = slotDate.HasValue ?
+                new ObjectParameter("slotDate", slotDate) :
+                new ObjectParameter("slotDate", typeof(System.DateTime));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("location", location) :
+                new ObjectParameter("location", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SlotAvailabilityStructure_Procedure_Result>("SlotAvailabilityStructure_Procedure", slotDateParameter, locationParameter);
+        }
+    
+        public virtual ObjectResult<SlotAvailabilityStructureTemplate_Procedure_Result> SlotAvailabilityStructureTemplate_Procedure(Nullable<System.DateTime> slotDate, string location)
+        {
+            var slotDateParameter = slotDate.HasValue ?
+                new ObjectParameter("slotDate", slotDate) :
+                new ObjectParameter("slotDate", typeof(System.DateTime));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("location", location) :
+                new ObjectParameter("location", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SlotAvailabilityStructureTemplate_Procedure_Result>("SlotAvailabilityStructureTemplate_Procedure", slotDateParameter, locationParameter);
+        }
+    
+        public virtual ObjectResult<SlotAvailStructureTemplate_Procedure_Result> SlotAvailStructureTemplate_Procedure(Nullable<System.DateTime> slotDate, string location)
+        {
+            var slotDateParameter = slotDate.HasValue ?
+                new ObjectParameter("slotDate", slotDate) :
+                new ObjectParameter("slotDate", typeof(System.DateTime));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("location", location) :
+                new ObjectParameter("location", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SlotAvailStructureTemplate_Procedure_Result>("SlotAvailStructureTemplate_Procedure", slotDateParameter, locationParameter);
+        }
     }
 }
