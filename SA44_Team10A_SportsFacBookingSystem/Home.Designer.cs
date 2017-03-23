@@ -28,15 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl_Home = new System.Windows.Forms.TabControl();
             this.tabPage_Home = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.lblHomeUserName = new System.Windows.Forms.Label();
+            this.lblHomeWelcome = new System.Windows.Forms.Label();
             this.tabPage_Mmembers = new System.Windows.Forms.TabPage();
             this.lblMmSearch = new System.Windows.Forms.Label();
             this.dataGridMmViewMembers = new System.Windows.Forms.DataGridView();
@@ -75,6 +83,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl_Home.SuspendLayout();
+            this.tabPage_Home.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.tabPage_Mmembers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMmViewMembers)).BeginInit();
             this.tabPage_Mfacility.SuspendLayout();
@@ -106,6 +116,10 @@
             // 
             // tabPage_Home
             // 
+            this.tabPage_Home.Controls.Add(this.panel2);
+            this.tabPage_Home.Controls.Add(this.crystalReportViewer1);
+            this.tabPage_Home.Controls.Add(this.lblHomeUserName);
+            this.tabPage_Home.Controls.Add(this.lblHomeWelcome);
             this.tabPage_Home.Location = new System.Drawing.Point(4, 25);
             this.tabPage_Home.Name = "tabPage_Home";
             this.tabPage_Home.Padding = new System.Windows.Forms.Padding(3);
@@ -115,6 +129,102 @@
             this.tabPage_Home.UseVisualStyleBackColor = true;
             this.tabPage_Home.Click += new System.EventHandler(this.HomeLoadEvent);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.button6);
+            this.panel2.Location = new System.Drawing.Point(4, 74);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(203, 341);
+            this.panel2.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(12, 4);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 14);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Reports Dashboard";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button3.Location = new System.Drawing.Point(11, 241);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(172, 48);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Current Day Booking Report";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button4.Location = new System.Drawing.Point(10, 149);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(173, 45);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Location Count By Facility Report";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button6.Location = new System.Drawing.Point(10, 57);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(172, 46);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "Booking Cross Tab Report";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(6, 42);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(762, 395);
+            this.crystalReportViewer1.TabIndex = 6;
+            this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
+            // 
+            // lblHomeUserName
+            // 
+            this.lblHomeUserName.AutoSize = true;
+            this.lblHomeUserName.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHomeUserName.Location = new System.Drawing.Point(88, 17);
+            this.lblHomeUserName.Name = "lblHomeUserName";
+            this.lblHomeUserName.Size = new System.Drawing.Size(0, 14);
+            this.lblHomeUserName.TabIndex = 2;
+            // 
+            // lblHomeWelcome
+            // 
+            this.lblHomeWelcome.AutoSize = true;
+            this.lblHomeWelcome.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHomeWelcome.Location = new System.Drawing.Point(15, 17);
+            this.lblHomeWelcome.Name = "lblHomeWelcome";
+            this.lblHomeWelcome.Size = new System.Drawing.Size(61, 14);
+            this.lblHomeWelcome.TabIndex = 1;
+            this.lblHomeWelcome.Text = "Welcome";
+            // 
             // tabPage_Mmembers
             // 
             this.tabPage_Mmembers.Controls.Add(this.lblMmSearch);
@@ -123,10 +233,10 @@
             this.tabPage_Mmembers.Controls.Add(this.lblSearchError);
             this.tabPage_Mmembers.Controls.Add(this.txtMmSearchMembers);
             this.tabPage_Mmembers.Controls.Add(this.btnMmRegisterMember);
-            this.tabPage_Mmembers.Location = new System.Drawing.Point(4, 29);
+            this.tabPage_Mmembers.Location = new System.Drawing.Point(4, 25);
             this.tabPage_Mmembers.Name = "tabPage_Mmembers";
             this.tabPage_Mmembers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Mmembers.Size = new System.Drawing.Size(774, 439);
+            this.tabPage_Mmembers.Size = new System.Drawing.Size(774, 443);
             this.tabPage_Mmembers.TabIndex = 1;
             this.tabPage_Mmembers.Text = "Manage Members";
             this.tabPage_Mmembers.UseVisualStyleBackColor = true;
@@ -136,7 +246,7 @@
             // 
             this.lblMmSearch.AutoSize = true;
             this.lblMmSearch.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMmSearch.Location = new System.Drawing.Point(39, 31);
+            this.lblMmSearch.Location = new System.Drawing.Point(86, 46);
             this.lblMmSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMmSearch.Name = "lblMmSearch";
             this.lblMmSearch.Size = new System.Drawing.Size(75, 13);
@@ -149,33 +259,33 @@
             this.dataGridMmViewMembers.AllowUserToDeleteRows = false;
             this.dataGridMmViewMembers.AllowUserToResizeColumns = false;
             this.dataGridMmViewMembers.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Menu;
-            this.dataGridMmViewMembers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Menu;
+            this.dataGridMmViewMembers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridMmViewMembers.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridMmViewMembers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridMmViewMembers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridMmViewMembers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridMmViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridMmViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridMmViewMembers.ColumnHeadersHeight = 25;
             this.dataGridMmViewMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridMmViewMembers.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridMmViewMembers.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridMmViewMembers.EnableHeadersVisualStyles = false;
             this.dataGridMmViewMembers.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridMmViewMembers.Location = new System.Drawing.Point(41, 90);
+            this.dataGridMmViewMembers.Location = new System.Drawing.Point(88, 106);
             this.dataGridMmViewMembers.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridMmViewMembers.MultiSelect = false;
             this.dataGridMmViewMembers.Name = "dataGridMmViewMembers";
@@ -202,7 +312,7 @@
             this.btnMmSearchMembers.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMmSearchMembers.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnMmSearchMembers.Image = ((System.Drawing.Image)(resources.GetObject("btnMmSearchMembers.Image")));
-            this.btnMmSearchMembers.Location = new System.Drawing.Point(194, 47);
+            this.btnMmSearchMembers.Location = new System.Drawing.Point(241, 63);
             this.btnMmSearchMembers.Margin = new System.Windows.Forms.Padding(2);
             this.btnMmSearchMembers.Name = "btnMmSearchMembers";
             this.btnMmSearchMembers.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
@@ -215,7 +325,7 @@
             // 
             this.lblSearchError.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearchError.ForeColor = System.Drawing.Color.Red;
-            this.lblSearchError.Location = new System.Drawing.Point(271, 47);
+            this.lblSearchError.Location = new System.Drawing.Point(318, 62);
             this.lblSearchError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSearchError.Name = "lblSearchError";
             this.lblSearchError.Size = new System.Drawing.Size(142, 21);
@@ -227,7 +337,7 @@
             this.txtMmSearchMembers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMmSearchMembers.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMmSearchMembers.ForeColor = System.Drawing.Color.Black;
-            this.txtMmSearchMembers.Location = new System.Drawing.Point(41, 48);
+            this.txtMmSearchMembers.Location = new System.Drawing.Point(88, 63);
             this.txtMmSearchMembers.Margin = new System.Windows.Forms.Padding(2);
             this.txtMmSearchMembers.Name = "txtMmSearchMembers";
             this.txtMmSearchMembers.Size = new System.Drawing.Size(147, 24);
@@ -242,7 +352,7 @@
             this.btnMmRegisterMember.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnMmRegisterMember.Image = ((System.Drawing.Image)(resources.GetObject("btnMmRegisterMember.Image")));
             this.btnMmRegisterMember.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMmRegisterMember.Location = new System.Drawing.Point(441, 47);
+            this.btnMmRegisterMember.Location = new System.Drawing.Point(460, 62);
             this.btnMmRegisterMember.Margin = new System.Windows.Forms.Padding(2);
             this.btnMmRegisterMember.Name = "btnMmRegisterMember";
             this.btnMmRegisterMember.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
@@ -260,10 +370,10 @@
             this.tabPage_Mfacility.Controls.Add(this.txtSearchFacility);
             this.tabPage_Mfacility.Controls.Add(this.lblSearch);
             this.tabPage_Mfacility.Controls.Add(this.btnRegisterFacility);
-            this.tabPage_Mfacility.Location = new System.Drawing.Point(4, 29);
+            this.tabPage_Mfacility.Location = new System.Drawing.Point(4, 25);
             this.tabPage_Mfacility.Name = "tabPage_Mfacility";
             this.tabPage_Mfacility.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Mfacility.Size = new System.Drawing.Size(774, 439);
+            this.tabPage_Mfacility.Size = new System.Drawing.Size(774, 443);
             this.tabPage_Mfacility.TabIndex = 2;
             this.tabPage_Mfacility.Text = "Manage Facility";
             this.tabPage_Mfacility.UseVisualStyleBackColor = true;
@@ -277,7 +387,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(162, 50);
+            this.btnSearch.Location = new System.Drawing.Point(242, 62);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
@@ -291,7 +401,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(260, 55);
+            this.label4.Location = new System.Drawing.Point(310, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 13);
             this.label4.TabIndex = 16;
@@ -302,34 +412,34 @@
             this.dataGridFacility.AllowUserToDeleteRows = false;
             this.dataGridFacility.AllowUserToResizeColumns = false;
             this.dataGridFacility.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Menu;
-            this.dataGridFacility.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Menu;
+            this.dataGridFacility.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridFacility.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridFacility.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridFacility.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridFacility.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridFacility.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridFacility.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridFacility.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridFacility.ColumnHeadersHeight = 25;
             this.dataGridFacility.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridFacility.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridFacility.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridFacility.EnableHeadersVisualStyles = false;
             this.dataGridFacility.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridFacility.Location = new System.Drawing.Point(35, 89);
+            this.dataGridFacility.Location = new System.Drawing.Point(85, 98);
             this.dataGridFacility.MultiSelect = false;
             this.dataGridFacility.Name = "dataGridFacility";
             this.dataGridFacility.ReadOnly = true;
@@ -347,16 +457,16 @@
             // 
             // txtSearchFacility
             // 
-            this.txtSearchFacility.Location = new System.Drawing.Point(35, 50);
+            this.txtSearchFacility.Location = new System.Drawing.Point(89, 62);
             this.txtSearchFacility.Multiline = true;
             this.txtSearchFacility.Name = "txtSearchFacility";
-            this.txtSearchFacility.Size = new System.Drawing.Size(122, 21);
+            this.txtSearchFacility.Size = new System.Drawing.Size(147, 24);
             this.txtSearchFacility.TabIndex = 13;
             // 
             // lblSearch
             // 
-            this.lblSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.Location = new System.Drawing.Point(32, 30);
+            this.lblSearch.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.Location = new System.Drawing.Point(87, 44);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(91, 23);
             this.lblSearch.TabIndex = 12;
@@ -369,9 +479,12 @@
             this.btnRegisterFacility.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegisterFacility.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegisterFacility.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnRegisterFacility.Location = new System.Drawing.Point(481, 44);
+            this.btnRegisterFacility.Image = ((System.Drawing.Image)(resources.GetObject("btnRegisterFacility.Image")));
+            this.btnRegisterFacility.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRegisterFacility.Location = new System.Drawing.Point(460, 61);
             this.btnRegisterFacility.Name = "btnRegisterFacility";
-            this.btnRegisterFacility.Size = new System.Drawing.Size(151, 30);
+            this.btnRegisterFacility.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.btnRegisterFacility.Size = new System.Drawing.Size(223, 25);
             this.btnRegisterFacility.TabIndex = 11;
             this.btnRegisterFacility.Text = "Register New Facility";
             this.btnRegisterFacility.UseVisualStyleBackColor = false;
@@ -381,10 +494,10 @@
             // 
             this.tabPage_Booking.Controls.Add(this.groupBox_Facilityinfo);
             this.tabPage_Booking.Controls.Add(this.grpBox_booking);
-            this.tabPage_Booking.Location = new System.Drawing.Point(4, 29);
+            this.tabPage_Booking.Location = new System.Drawing.Point(4, 25);
             this.tabPage_Booking.Name = "tabPage_Booking";
             this.tabPage_Booking.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Booking.Size = new System.Drawing.Size(774, 439);
+            this.tabPage_Booking.Size = new System.Drawing.Size(774, 443);
             this.tabPage_Booking.TabIndex = 3;
             this.tabPage_Booking.Text = "Booking/Cancellation";
             this.tabPage_Booking.UseVisualStyleBackColor = true;
@@ -501,7 +614,9 @@
             // button_SearchFacility
             // 
             this.button_SearchFacility.BackColor = System.Drawing.Color.SteelBlue;
-            this.button_SearchFacility.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_SearchFacility.FlatAppearance.BorderSize = 0;
+            this.button_SearchFacility.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_SearchFacility.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_SearchFacility.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button_SearchFacility.Location = new System.Drawing.Point(635, 27);
             this.button_SearchFacility.Name = "button_SearchFacility";
@@ -514,18 +629,19 @@
             // label_Date
             // 
             this.label_Date.AutoSize = true;
-            this.label_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Date.Location = new System.Drawing.Point(334, 33);
+            this.label_Date.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Date.Location = new System.Drawing.Point(343, 35);
             this.label_Date.Name = "label_Date";
-            this.label_Date.Size = new System.Drawing.Size(38, 17);
+            this.label_Date.Size = new System.Drawing.Size(34, 16);
             this.label_Date.TabIndex = 4;
             this.label_Date.Text = "Date";
             // 
             // dateTimePicker_Facility
             // 
+            this.dateTimePicker_Facility.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker_Facility.Location = new System.Drawing.Point(384, 31);
             this.dateTimePicker_Facility.Name = "dateTimePicker_Facility";
-            this.dateTimePicker_Facility.Size = new System.Drawing.Size(200, 25);
+            this.dateTimePicker_Facility.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker_Facility.TabIndex = 3;
             // 
             // combo_FacilityName
@@ -539,10 +655,10 @@
             // labelFacility
             // 
             this.labelFacility.AutoSize = true;
-            this.labelFacility.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFacility.Location = new System.Drawing.Point(6, 36);
+            this.labelFacility.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFacility.Location = new System.Drawing.Point(30, 35);
             this.labelFacility.Name = "labelFacility";
-            this.labelFacility.Size = new System.Drawing.Size(51, 17);
+            this.labelFacility.Size = new System.Drawing.Size(47, 16);
             this.labelFacility.TabIndex = 1;
             this.labelFacility.Text = "Facility";
             // 
@@ -637,6 +753,10 @@
             this.Text = "Sports Facility Booking Centre";
             this.Load += new System.EventHandler(this.Home_Load);
             this.tabControl_Home.ResumeLayout(false);
+            this.tabPage_Home.ResumeLayout(false);
+            this.tabPage_Home.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.tabPage_Mmembers.ResumeLayout(false);
             this.tabPage_Mmembers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMmViewMembers)).EndInit();
@@ -701,6 +821,14 @@
         private System.Windows.Forms.Button SignOut;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblHomeUserName;
+        private System.Windows.Forms.Label lblHomeWelcome;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button4;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label5;
     }
 }
 

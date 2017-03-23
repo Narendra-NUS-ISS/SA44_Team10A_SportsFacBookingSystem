@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -41,6 +45,7 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="SA44_Team10A_SFBookingSystem_Layout, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\SA44_Team10A_SFBookingSystem_Layout\SA44_Team10A_SFBookingSystem_Layout\bin\Debug\SA44_Team10A_SFBookingSystem_Layout.dll</HintPath>
@@ -53,6 +58,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,6 +82,17 @@
     </Compile>
     <Compile Include="Booking.Designer.cs">
       <DependentUpon>Booking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BookingCrossTabReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookingCrossTabReport.Designer.cs">
+      <DependentUpon>BookingCrossTabReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BookingDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookingDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="BookingModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -101,6 +119,36 @@
       <DependentUpon>Cancellation.cs</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
+    <Compile Include="CRBookCrossTabascrossFacilitiesReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRBookCrossTabascrossFacilitiesReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRBookingCountVsDateReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRBookingCountVsDateReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRCurrentDayBookingReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRCurrentDayBookingReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRLocationCountByFacilityReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRLocationCountByFacilityReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CurrentDayBookingReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CurrentDayBookingReport.Designer.cs">
+      <DependentUpon>CurrentDayBookingReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Facility.cs">
       <DependentUpon>BookingModel.tt</DependentUpon>
     </Compile>
@@ -153,6 +201,12 @@
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Ibooking.cs" />
+    <Compile Include="LocationCountbyFacilityReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocationCountbyFacilityReport.Designer.cs">
+      <DependentUpon>LocationCountbyFacilityReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManageEmp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,8 +243,30 @@
     <EmbeddedResource Include="Booking.resx">
       <DependentUpon>Booking.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BookingCrossTabReport.resx">
+      <DependentUpon>BookingCrossTabReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cancellation.resx">
       <DependentUpon>Cancellation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRBookCrossTabascrossFacilitiesReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRBookCrossTabascrossFacilitiesReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRBookingCountVsDateReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRBookingCountVsDateReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRCurrentDayBookingReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRCurrentDayBookingReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRLocationCountByFacilityReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRLocationCountByFacilityReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrentDayBookingReport.resx">
+      <DependentUpon>CurrentDayBookingReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -216,6 +292,9 @@
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LocationCountbyFacilityReport.resx">
+      <DependentUpon>LocationCountbyFacilityReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManageEmp.resx">
       <DependentUpon>ManageEmp.cs</DependentUpon>
     </EmbeddedResource>
@@ -232,6 +311,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BookingModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="BookingDataSet.xsc">
+      <DependentUpon>BookingDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BookingDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BookingDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="BookingDataSet.xss">
+      <DependentUpon>BookingDataSet.xsd</DependentUpon>
+    </None>
     <None Include="BookingModel.edmx.diagram">
       <DependentUpon>BookingModel.edmx</DependentUpon>
     </None>
@@ -263,6 +353,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

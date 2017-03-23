@@ -42,7 +42,7 @@ namespace SA44_Team10A_SportsFacBookingSystem
                     {
                         if (homeForm == null)
                         {
-                            homeForm = new Home();
+                            homeForm = new Home(GetUserName());
                             homeForm.Show();
                             homeForm.FormClosed += HomeForm_FormClosed;
 
@@ -102,14 +102,12 @@ namespace SA44_Team10A_SportsFacBookingSystem
                 btnLogin.ForeColor = Color.DimGray;
             }
         }
-
        
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
             enableDisableLoginButton();
         }
-
-       
+               
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
             enableDisableLoginButton();
@@ -139,6 +137,11 @@ namespace SA44_Team10A_SportsFacBookingSystem
         private void FormSignUp_FormClosed(object sender, FormClosedEventArgs e)
         {
             formSignUp = null;
+        }
+
+        public String GetUserName()
+        {
+            return txtUsername.Text.ToString();
         }
     }
 }

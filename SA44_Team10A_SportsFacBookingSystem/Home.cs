@@ -19,10 +19,13 @@ namespace SA44_Team10A_SportsFacBookingSystem
         FormMmRegisterMembers RegisterForm;
         FormMmUpdateMember UpdateForm;
         FormRegisterNewFacility registerFacilityForm;
+        String username;
         FormLogOut formLogout;
-        public Home()
+        public Home(String userName)
         {
+            this.username = userName;
             InitializeComponent();
+            lblHomeUserName.Text = username;
             entityContext = new BookingSystemEntities();
             progressBar.Maximum = 10;
         }
@@ -39,14 +42,14 @@ namespace SA44_Team10A_SportsFacBookingSystem
         // Home tab event handler
         private void HomeLoadEvent(object sender, EventArgs e)
         {
-
+           // FillUserName();
         }
 
+       
         // Manage members view mode event handler method
         private void ManageMembersEventHandler(object sender, EventArgs e)
         {
-            //statusLabel.Text = "dhvfdhvj";
-            //ViewRefresh();
+
         }
 
         // Manage mebers view mode screen event handler
@@ -241,7 +244,11 @@ namespace SA44_Team10A_SportsFacBookingSystem
 
         private void tabControl_Home_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl_Home.SelectedIndex == 1)
+            if (tabControl_Home.SelectedIndex == 0)
+            {
+                lblHomeUserName.Text = username;
+            }
+            else if (tabControl_Home.SelectedIndex == 1)
             {
                 ViewRefresh();
                 this.dataGridMmViewMembers.Size = new System.Drawing.Size(600, 330);
@@ -378,5 +385,45 @@ namespace SA44_Team10A_SportsFacBookingSystem
             formLogout = null;
         }
 
+        private void crystalReportViewer1_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                BookingDataSet ds = new BookingDataSet();
+
+                BookingDataSetTableAdapters.FacilityTableAdapter fa = new BookingDataSetTableAdapters.FacilityTableAdapter();
+                BookingDataSetTableAdapters.CurrentDayBookingsReport_ViewTableAdapter dailyBookReport = new BookingDataSetTableAdapters.CurrentDayBookingsReport_ViewTableAdapter();
+                BookingDataSetTableAdapters.DateVsBookingsCountReport_ViewTableAdapter dateVsBookingCountReport = new BookingDataSetTableAdapters.DateVsBookingsCountReport_ViewTableAdapter();
+                dailyBookReport.Fill(ds.CurrentDayBookingsReport_View);
+                dateVsBookingCountReport.Fill(ds.DateVsBookingsCountReport_View);
+                fa.Fill(ds.Facility);
+                CRBookingCountVsDateReport report = new CRBookingCountVsDateReport();
+                report.SetDataSource(ds);
+                crystalReportViewer1.ReportSource = report;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CurrentDayBookingReport form = new CurrentDayBookingReport();
+            form.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            LocationCountbyFacilityReport form = new LocationCountbyFacilityReport();
+            form.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            BookingCrossTabReport form = new BookingCrossTabReport();
+            form.Show();
+        }
     }
 }
