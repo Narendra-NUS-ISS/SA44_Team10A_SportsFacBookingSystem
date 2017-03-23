@@ -110,6 +110,42 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogOut.Designer.cs">
+      <DependentUpon>FormLogOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMmRegisterMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMmRegisterMembers.Designer.cs">
+      <DependentUpon>FormMmRegisterMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMmUpdateMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMmUpdateMember.Designer.cs">
+      <DependentUpon>FormMmUpdateMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRegisterNewFacility.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRegisterNewFacility.designer.cs">
+      <DependentUpon>FormRegisterNewFacility.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSignUp.designer.cs">
+      <DependentUpon>FormSignUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +194,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogOut.resx">
+      <DependentUpon>FormLogOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMmRegisterMembers.resx">
+      <DependentUpon>FormMmRegisterMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMmUpdateMember.resx">
+      <DependentUpon>FormMmUpdateMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRegisterNewFacility.resx">
+      <DependentUpon>FormRegisterNewFacility.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSignUp.resx">
+      <DependentUpon>FormSignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

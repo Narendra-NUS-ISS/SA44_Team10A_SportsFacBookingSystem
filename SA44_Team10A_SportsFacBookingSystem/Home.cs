@@ -16,6 +16,10 @@ namespace SA44_Team10A_SportsFacBookingSystem
         BookingSystemEntities entityContext;
         List<SlotAvailStructureTemplate_Procedure_Result> transactions = null;
         public static int transactionsCount = 0;
+        FormMmRegisterMembers RegisterForm;
+        FormMmUpdateMember UpdateForm;
+        FormRegisterNewFacility registerFacilityForm;
+        FormLogOut formLogout;
         public Home()
         {
             InitializeComponent();
@@ -39,9 +43,10 @@ namespace SA44_Team10A_SportsFacBookingSystem
         }
 
         // Manage members view mode event handler method
-        private void ManageMembersLoadEventHandler(object sender, EventArgs e)
+        private void ManageMembersEventHandler(object sender, EventArgs e)
         {
-
+            //statusLabel.Text = "dhvfdhvj";
+            //ViewRefresh();
         }
 
         // Manage mebers view mode screen event handler
@@ -183,8 +188,195 @@ namespace SA44_Team10A_SportsFacBookingSystem
         }
 
 
+        private void SearchMembersInfo(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMmRegisterMember_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //********************************* Member Functions*****************************
+
+        private void fillColumn()
+        {
+            if (dataGridMmViewMembers.ColumnCount < 3)
+            {
+                // Datagrid Column of Buttons 
+                DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn();
+                btnColumn.Width = 40;
+                btnColumn.DefaultCellStyle.Padding = new Padding(0, 8, 0, 8);
+                btnColumn.Text = "Edit";
+                btnColumn.UseColumnTextForButtonValue = true;
+                dataGridMmViewMembers.Columns.Add(btnColumn);
+
+                // Insert dummy column
+                DataGridViewTextBoxColumn dummy = new DataGridViewTextBoxColumn();
+                dummy.Width = 20;
+                dataGridMmViewMembers.Columns.Add(dummy);
+            }
+        }
+
+        // Refresh datadrid view
+        public void ViewRefresh()
+        {
+            this.dataGridMmViewMembers.DataSource = entityContext.Members.Select
+                (x => new { x.MemberName, x.PhoneNo }).ToList();
+
+            this.dataGridMmViewMembers.Rows[0].Cells[0].Selected = false; // Removes row highlight upon load
+            fillColumn();
+        }
+
+        public string GetNameValue()
+        {
+            return dataGridMmViewMembers.CurrentRow.Cells["MemberName"].Value.ToString();
+        }
+
+        public string GetPhoneValue()
+        {
+            return dataGridMmViewMembers.CurrentRow.Cells["PhoneNo"].Value.ToString();
+        }
+
+        private void tabControl_Home_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl_Home.SelectedIndex == 1)
+            {
+                ViewRefresh();
+                this.dataGridMmViewMembers.Size = new System.Drawing.Size(600, 330);
+                dataGridMmViewMembers.AutoGenerateColumns = false;
+                dataGridMmViewMembers.Columns["MemberName"].Width = 262;
+                dataGridMmViewMembers.Columns["PhoneNo"].Width = 260;               
+            }
+               else if(tabControl_Home.SelectedIndex == 2)
+            {
+                RefreshFacilityTable();
+            }
+        }
 
 
+        public void RefreshFacilityTable()
+        {
+            dataGridFacility.DataSource = entityContext.Facilities.Select(x => new { x.FacilityName, x.Location }).ToList();
+        }
+
+        private void btnMmSearchMembers_Click(object sender, EventArgs e)
+        {
+
+            if (txtMmSearchMembers.Text.Trim().Equals(String.Empty))
+            {
+                ViewRefresh();
+                lblSearchError.Text = "";
+            }
+            else
+            {
+
+                int query = entityContext.Members.Where
+                    (x => x.MemberName == txtMmSearchMembers.Text.Trim()).Count();
+
+                if (query > 0)
+                {
+                    dataGridMmViewMembers.DataSource = entityContext.Members.Where
+                   (x => x.MemberName == txtMmSearchMembers.Text.Trim()).Select
+                   (x => new { x.MemberName, x.PhoneNo }).ToList();
+                    lblSearchError.Text = "";
+                }
+                else
+                {
+                    dataGridMmViewMembers.DataSource = null;
+                    lblSearchError.Text = "No records found";
+                }
+            }
+        }
+
+        private void btnMmRegisterMember_Click_1(object sender, EventArgs e)
+        {
+
+            if (RegisterForm == null)
+            {
+                RegisterForm = new FormMmRegisterMembers(this);
+                RegisterForm.Show();
+                                
+                RegisterForm.FormClosed += RegisterForm_FormClosed; 
+            }
+            else RegisterForm.Activate();
+        }
+
+        private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            RegisterForm = null;
+        }
+
+        private void dataGridMmViewMembers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateForm = new FormMmUpdateMember(this);
+            UpdateForm.Show();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+            if (!txtSearchFacility.Text.Trim().Equals(String.Empty))
+            {
+                int count = entityContext.Facilities.Where(x => x.FacilityName == txtSearchFacility.Text).Count();
+                if (count > 0)
+                {
+                    dataGridFacility.DataSource = entityContext.Facilities.Where(x => x.FacilityName == txtSearchFacility.Text).Select(x => new { x.FacilityName, x.Location }).ToList();
+                    lblSearchError.Text = "";
+                }
+                else
+                {
+                    lblSearchError.Text = "No Records Found";
+                    dataGridFacility.DataSource = null;
+                }
+            }
+            else
+            {
+                lblSearchError.Text = "";
+                RefreshFacilityTable();
+            }
+        }
+
+        private void btnRegisterFacility_Click(object sender, EventArgs e)
+        {
+
+            if (registerFacilityForm == null)
+            {
+                registerFacilityForm = new FormRegisterNewFacility(this);
+                registerFacilityForm.Show();
+                registerFacilityForm.FormClosed += RegisterFacilityForm_FormClosed;
+            }
+            else
+            {
+                registerFacilityForm.Activate();
+            }
+        }
+
+        private void RegisterFacilityForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            registerFacilityForm = null;
+        }
+
+        private void SignOut_Click(object sender, EventArgs e)
+        {
+            if (formLogout == null)
+            {
+                formLogout = new FormLogOut();
+                formLogout.Show();
+
+                formLogout.FormClosed += FormLogout_FormClosed;
+            }
+            else
+            {
+                formLogout.Activate();
+            }
+        }
+
+        private void FormLogout_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            formLogout = null;
+        }
 
     }
 }
