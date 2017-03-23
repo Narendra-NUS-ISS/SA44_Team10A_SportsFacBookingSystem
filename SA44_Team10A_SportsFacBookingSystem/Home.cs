@@ -14,14 +14,13 @@ namespace SA44_Team10A_SportsFacBookingSystem
     public partial class Home : Form
     {
         BookingSystemEntities entityContext;
-        IList<SlotAvailStructureTemplate_Procedure_Result> transactions = null;
+        List<SlotAvailStructureTemplate_Procedure_Result> transactions = null;
         public static int transactionsCount = 0;
         public Home()
         {
             InitializeComponent();
             entityContext = new BookingSystemEntities();
             progressBar.Maximum = 10;
-
         }
 
 
@@ -29,11 +28,6 @@ namespace SA44_Team10A_SportsFacBookingSystem
         private void Home_Load(object sender, EventArgs e)
         {
             statusLabel.Text = Constants.READY;
-           
-           
-            progressBar.PerformStep();
-            progressBar.PerformStep();
-            progressBar.PerformStep();
             progressBar.PerformStep();
             progressBar.Step = 10;
         }
@@ -67,8 +61,6 @@ namespace SA44_Team10A_SportsFacBookingSystem
             // Date picker customization to facilitate only Future dates selection
             dateTimePicker_Facility.MinDate = DateTime.Today.AddDays(1);
             dateTimePicker_Facility.MaxDate = DateTime.Today.AddDays(10);
-
-
             
         }
 
@@ -76,59 +68,28 @@ namespace SA44_Team10A_SportsFacBookingSystem
         public  void SearchFacilityEventHandler(object sender, EventArgs e)
         {
             // Read input fileds
+            label3.Text = "";
+            if ("" == combo_FacilityName.Text.ToString())
+            {
+                label3.Text = "Select the Facility";
+            }
             String facilityName = combo_FacilityName.Text.Trim();
             DateTime bookingDate = dateTimePicker_Facility.Value;
-            DateTime dateTime = new DateTime(bookingDate.Year, bookingDate.Month, bookingDate.Day);
-
-            // Retrive the booking transactions
-             transactions = new List<SlotAvailStructureTemplate_Procedure_Result>();
-
-            List<Facility> facilities = entityContext.Facilities.Where(x => x.FacilityName == facilityName).ToList();
-            
-            foreach (Facility facility in facilities)
+            DateTime bookdateTime = new DateTime(bookingDate.Year, bookingDate.Month, bookingDate.Day);
+            try
             {
-                SlotAvailStructureTemplate_Procedure_Result transaction = null;
-                try
-                {
-                    transaction =  entityContext.SlotAvailStructureTemplate_Procedure(dateTime, facility.FacilityId.ToString()).First();
-                    if (null != transaction)
-                    {
-
-                        transactions.Add(transaction);
-                    }
-                }
-                catch(Exception exception)
-                {
-                    SlotAvailStructureTemplate_Procedure_Result blankTransaction = new SlotAvailStructureTemplate_Procedure_Result();
-                    blankTransaction.Location = facility.Location;
-                    blankTransaction.Slot_10AM = "0";
-                    blankTransaction.Slot_11AM = "0";
-                    blankTransaction.Slot_12AM = "0";
-                    blankTransaction.Slot_13PM = "0";
-                    blankTransaction.Slot_14PM = "0";
-                    blankTransaction.Slot_15PM = "0";
-                    blankTransaction.Slot_16PM = "0";
-                    blankTransaction.Slot_17PM = "0";
-                    blankTransaction.Slot_18PM = "0";
-                    blankTransaction.Slot_19PM = "0";
-                    blankTransaction.Slot_20PM = "0";
-                    blankTransaction.Slot_21PM = "0";
-                    blankTransaction.Slot_21PM = "0";
-                    blankTransaction.Slot_22PM = "0";
-                    blankTransaction.Slot_6AM = "0";
-                    blankTransaction.Slot_7AM = "0";
-                    blankTransaction.Slot_8AM = "0";
-                    blankTransaction.Slot_9AM = "0";
-                    blankTransaction.FacilityName = facility.FacilityName;
-
-                    transactions.Add(blankTransaction);
-                   
-                }
-                
+                // Retrive the booking transactions
+                Ibooking bookings = new SlotBooking();
+                transactions = bookings.GetSlotStructure(bookdateTime, facilityName);
+                transactionsCount = transactions.Count;
+            } catch(Exception exception)
+            {
+                statusLabel.Text = "Operation failed due to : " + exception.Message;
             }
-            transactionsCount = transactions.Count;
+            // Update Datagrid with booiking slot layout
             dataGridView_Facilities.DataSource = transactions;
             dataGridView_Facilities.ReadOnly = true;
+            //statusLabel.Text = Constants.LOADED;
 
             //Access each & every cell & Add colour to cells
             for (int rowPosition = 0; rowPosition < transactions.Count; rowPosition++)
@@ -137,40 +98,31 @@ namespace SA44_Team10A_SportsFacBookingSystem
                 {
                     try
                     {
-                        //String cellcontent = cell.Value.ToString().Trim();
-
                         String cellcontent = (cell.Value == null ? "0" : cell.Value.ToString());
                         if (cellcontent.Equals("0"))
                         {
                             cell.Value = "Available";
                             cell.Style.BackColor = Color.Green;
-
                         }
                         else if (cellcontent.Contains("-"))
                         {
-                            
                                 cell.Value = "Booked";
                                 cell.Style.BackColor = Color.Red;
-                            
-                            
                         }
-                        //  MessageBox.Show(c.Value.ToString());
                     } catch(Exception exception)
                     {
-
+                        statusLabel.Text = "Operation failed due to :" + exception.Message;
                     }
                 }
             }
-
-
-
         }
 
+
+        // Event handler for Booking & cancellation operations
         private void GetSlotDetailsEventHandler(object sender, DataGridViewCellEventArgs e)
         {
             progressBar.Step = 2;
             SlotAvailStructureTemplate_Procedure_Result result;
-            //MessageBox.Show("Column :"+e.ColumnIndex+"   Row :"+e.RowIndex);
             if (e.RowIndex >= 0)
             {
                  result = transactions[e.RowIndex];
@@ -178,55 +130,61 @@ namespace SA44_Team10A_SportsFacBookingSystem
             {
                 return;
             }
+
+            //Retrieve the cell positions
             int slot = e.ColumnIndex + 5;
             String facilityName = result.FacilityName;
             String location = result.Location;
             DateTime bookingDate = dateTimePicker_Facility.Value;
             DateTime bookdateTime = new DateTime(bookingDate.Year, bookingDate.Month, bookingDate.Day, slot,bookingDate.Minute,bookingDate.Second);
-
-           // MessageBox.Show("Facility :"+ result.FacilityName +" \n Location :"+result.Location+"\n  Slot :"+slot +"\n Date  :"+ bookdateTime);
-
             Facility facility = entityContext.Facilities.Where(x => x.FacilityName == facilityName && x.Location == location).First();
             BookingTransaction booking = null;
+            // validate against existing booking transactions
             try
             {
                  booking = entityContext.BookingTransactions.Where(x => x.FacilityId == facility.FacilityId && x.SlotTime == bookdateTime && x.Status == "Booked").First();
-                
             }
             catch (Exception exception)
             {
-               // exception.Message;
+              //  statusLabel.Text = "Operation failed due to " + exception.Message;
             }
             if( booking != null && slot == booking.SlotTime.Hour && booking.Status == "Booked")
             {
-                Cancellation cancelform = new Cancellation(facility.FacilityId, bookdateTime, facility.FacilityName,facility.Location);
-                cancelform.ShowDialog();
-                SearchFacilityEventHandler(sender, e);
+                // Cancellation
+                try
+                {
+                    Cancellation cancelform = new Cancellation(facility.FacilityId, bookdateTime, facility.FacilityName, facility.Location);
+                    cancelform.ShowDialog();
+                    SearchFacilityEventHandler(sender, e);
+                    statusLabel.Text = "Successfully Cancelled :" + slot + " Slot [" + location + " - " + facilityName + "]";
+                    progressBar.Step = 10;
+                } catch(Exception exception)
+                {
+                    statusLabel.Text = "Operation failed due to : " + exception.Message;
+                }
             } else
             {
-                //  MessageBox.Show("Proceed to book");
                 if (slot > 5 && slot < 23)
                 {
+                    // Booking
                     String timeFrame = (slot > 12) ? "PM" : "AM";
                     progressBar.Step = 5;
-                    Booking form = new Booking(slot.ToString() + timeFrame, location, facilityName, bookdateTime, dataGridView_Facilities);
+                   Booking form = new Booking(slot.ToString() + timeFrame, location, facilityName, bookdateTime);
                    DialogResult dialogresult = form.ShowDialog();
                     String status = Booking.transactionStatus;
                     if(status == "SUCCESS")
                     {
                         progressBar.Step = 10;
                         statusLabel.Text = "Successfully booked :"+slot+timeFrame+ " Slot [" + location + " - " + facilityName+"]";
-
-                        //dataGridView_Facilities.Refresh();
                         SearchFacilityEventHandler(sender, e);
                     }
                 }
-                //dataGridView_Facilities.Refresh();
             }
-
-            //String result = prompt.DialogResult.ToString() == "OK" ? textBox.Text : "";
-            
-           // dataGridView_Facilities.Refresh();
         }
+
+
+
+
+
     }
 }

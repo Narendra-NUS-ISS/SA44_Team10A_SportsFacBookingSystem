@@ -35,8 +35,15 @@
             this.tabPage_Mfacility = new System.Windows.Forms.TabPage();
             this.tabPage_Booking = new System.Windows.Forms.TabPage();
             this.groupBox_Facilityinfo = new System.Windows.Forms.GroupBox();
+            this.Note = new System.Windows.Forms.Label();
+            this.Legend = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.dataGridView_Facilities = new System.Windows.Forms.DataGridView();
             this.grpBox_booking = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.button_SearchFacility = new System.Windows.Forms.Button();
             this.label_Date = new System.Windows.Forms.Label();
             this.dateTimePicker_Facility = new System.Windows.Forms.DateTimePicker();
@@ -47,23 +54,18 @@
             this.label_Heading = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.statusStrip_Home = new System.Windows.Forms.StatusStrip();
-            this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.Legend = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.tabControl_Home.SuspendLayout();
             this.tabPage_Booking.SuspendLayout();
             this.groupBox_Facilityinfo.SuspendLayout();
+            this.Legend.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Facilities)).BeginInit();
             this.grpBox_booking.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip_Home.SuspendLayout();
-            this.Legend.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl_Home
@@ -129,6 +131,7 @@
             // 
             // groupBox_Facilityinfo
             // 
+            this.groupBox_Facilityinfo.Controls.Add(this.Note);
             this.groupBox_Facilityinfo.Controls.Add(this.Legend);
             this.groupBox_Facilityinfo.Controls.Add(this.dataGridView_Facilities);
             this.groupBox_Facilityinfo.Location = new System.Drawing.Point(6, 113);
@@ -137,6 +140,67 @@
             this.groupBox_Facilityinfo.TabIndex = 1;
             this.groupBox_Facilityinfo.TabStop = false;
             this.groupBox_Facilityinfo.Text = "Facilities Availability";
+            // 
+            // Note
+            // 
+            this.Note.AutoSize = true;
+            this.Note.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Note.ForeColor = System.Drawing.Color.Navy;
+            this.Note.Location = new System.Drawing.Point(483, 23);
+            this.Note.Name = "Note";
+            this.Note.Size = new System.Drawing.Size(250, 15);
+            this.Note.TabIndex = 2;
+            this.Note.Text = "NOTE : Click on cell for Booking/Cancellation";
+            // 
+            // Legend
+            // 
+            this.Legend.Controls.Add(this.label2);
+            this.Legend.Controls.Add(this.label1);
+            this.Legend.Controls.Add(this.button2);
+            this.Legend.Controls.Add(this.button1);
+            this.Legend.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Legend.Location = new System.Drawing.Point(9, 256);
+            this.Legend.Name = "Legend";
+            this.Legend.Size = new System.Drawing.Size(724, 58);
+            this.Legend.TabIndex = 1;
+            this.Legend.TabStop = false;
+            this.Legend.Text = "Legend";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(403, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(244, 17);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Booked and available for cancellation";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(95, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(140, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Available for booking";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Red;
+            this.button2.Location = new System.Drawing.Point(328, 22);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(69, 24);
+            this.button2.TabIndex = 1;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.ForestGreen;
+            this.button1.Location = new System.Drawing.Point(19, 22);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(69, 24);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // dataGridView_Facilities
             // 
@@ -149,18 +213,28 @@
             // 
             // grpBox_booking
             // 
+            this.grpBox_booking.Controls.Add(this.label3);
             this.grpBox_booking.Controls.Add(this.button_SearchFacility);
             this.grpBox_booking.Controls.Add(this.label_Date);
             this.grpBox_booking.Controls.Add(this.dateTimePicker_Facility);
             this.grpBox_booking.Controls.Add(this.combo_FacilityName);
             this.grpBox_booking.Controls.Add(this.labelFacility);
             this.grpBox_booking.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpBox_booking.Location = new System.Drawing.Point(6, 31);
+            this.grpBox_booking.Location = new System.Drawing.Point(6, 8);
             this.grpBox_booking.Name = "grpBox_booking";
-            this.grpBox_booking.Size = new System.Drawing.Size(750, 76);
+            this.grpBox_booking.Size = new System.Drawing.Size(750, 92);
             this.grpBox_booking.TabIndex = 0;
             this.grpBox_booking.TabStop = false;
             this.grpBox_booking.Text = "Search Facilities Availability";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(83, 71);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 20);
+            this.label3.TabIndex = 2;
             // 
             // button_SearchFacility
             // 
@@ -228,7 +302,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 319F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 249F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tableLayoutPanel1.Controls.Add(this.label_Heading, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
@@ -272,66 +346,16 @@
             this.statusStrip_Home.TabIndex = 9;
             this.statusStrip_Home.Text = "statusStrip2";
             // 
-            // progressBar
-            // 
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(100, 16);
-            // 
             // statusLabel
             // 
             this.statusLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(0, 17);
             // 
-            // Legend
+            // progressBar
             // 
-            this.Legend.Controls.Add(this.label2);
-            this.Legend.Controls.Add(this.label1);
-            this.Legend.Controls.Add(this.button2);
-            this.Legend.Controls.Add(this.button1);
-            this.Legend.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Legend.Location = new System.Drawing.Point(9, 256);
-            this.Legend.Name = "Legend";
-            this.Legend.Size = new System.Drawing.Size(724, 58);
-            this.Legend.TabIndex = 1;
-            this.Legend.TabStop = false;
-            this.Legend.Text = "Legend";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.ForestGreen;
-            this.button1.Location = new System.Drawing.Point(19, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(69, 24);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(328, 22);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(69, 24);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(95, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Available for booking";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(403, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(244, 17);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Booked and available for cancellation";
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(100, 16);
             // 
             // Home
             // 
@@ -349,6 +373,9 @@
             this.tabControl_Home.ResumeLayout(false);
             this.tabPage_Booking.ResumeLayout(false);
             this.groupBox_Facilityinfo.ResumeLayout(false);
+            this.groupBox_Facilityinfo.PerformLayout();
+            this.Legend.ResumeLayout(false);
+            this.Legend.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Facilities)).EndInit();
             this.grpBox_booking.ResumeLayout(false);
             this.grpBox_booking.PerformLayout();
@@ -358,8 +385,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusStrip_Home.ResumeLayout(false);
             this.statusStrip_Home.PerformLayout();
-            this.Legend.ResumeLayout(false);
-            this.Legend.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,7 +401,6 @@
         private System.Windows.Forms.Label label_Heading;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.StatusStrip statusStrip_Home;
-        private System.Windows.Forms.ToolStripProgressBar progressBar;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.GroupBox grpBox_booking;
         private System.Windows.Forms.ComboBox combo_FacilityName;
@@ -391,6 +415,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView_Facilities;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Note;
+        private System.Windows.Forms.ToolStripProgressBar progressBar;
     }
 }
 

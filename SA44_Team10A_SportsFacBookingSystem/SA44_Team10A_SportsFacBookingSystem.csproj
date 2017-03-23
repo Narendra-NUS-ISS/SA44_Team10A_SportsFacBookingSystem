@@ -116,6 +116,7 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ibooking.cs" />
     <Compile Include="ManageEmp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +140,7 @@
     <Compile Include="SlotAvailStructureTemplate_Procedure_Result.cs">
       <DependentUpon>BookingModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SlotBooking.cs" />
     <Compile Include="UnAvailabileSlot_Procedure1_Result.cs">
       <DependentUpon>BookingModel.tt</DependentUpon>
     </Compile>

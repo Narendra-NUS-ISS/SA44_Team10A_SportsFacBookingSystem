@@ -24,7 +24,6 @@ namespace SA44_Team10A_SportsFacBookingSystem
         public Cancellation(int facilityId, DateTime bookingDate, String facilityName, String location)
         {
             InitializeComponent();
-
             this.facilityId = facilityId;
             this.bookingDate = bookingDate;
             entityContext = new BookingSystemEntities();
@@ -35,11 +34,16 @@ namespace SA44_Team10A_SportsFacBookingSystem
 
         private void CancelEventHandler(object sender, EventArgs e)
         {
-            BookingTransaction booking = entityContext.BookingTransactions.Where(x => x.FacilityId == facilityId && x.SlotTime == bookingDate && x.Status=="Booked").First();
-           // MessageBox.Show("Transaction Id :" + booking.TransactionId);
-            booking.Status = "Cancelled";
-            entityContext.SaveChanges();
-            CloseEventHandler(sender, e);
+            try
+            {
+                BookingTransaction booking = entityContext.BookingTransactions.Where(x => x.FacilityId == facilityId && x.SlotTime == bookingDate && x.Status == "Booked").First();
+                booking.Status = "Cancelled";
+                entityContext.SaveChanges();
+                CloseEventHandler(sender, e);
+            } catch(Exception exception)
+            {
+                throw exception;
+            }
         }
 
         private void CloseEventHandler(object sender, EventArgs e)

@@ -17,7 +17,6 @@ namespace SA44_Team10A_SportsFacBookingSystem
         private String facilityName;
         private  DateTime bookingDate;
         BookingSystemEntities entityContext;
-        private DataGridView bookingLayoutdatagridView;
         public static String transactionStatus="";
         public string Slot
         {
@@ -58,32 +57,19 @@ namespace SA44_Team10A_SportsFacBookingSystem
             }
         }
 
-        public DataGridView BookingLayoutdatagridView
-        {
-            get
-            {
-                return bookingLayoutdatagridView;
-            }
-
-            set
-            {
-                bookingLayoutdatagridView = value;
-            }
-        }
 
         public Booking()
         {
             InitializeComponent();
         }
 
-        public Booking(String slot, String location, String facilityName, DateTime bookingDate, DataGridView dataGridView)
+        public Booking(String slot, String location, String facilityName, DateTime bookingDate)
         {
             InitializeComponent();
             this.slot = slot;
             this.location = location;
             this.facilityName = facilityName;
             this.bookingDate = bookingDate;
-            this.bookingLayoutdatagridView = dataGridView;
 
             txtFacility.Text = facilityName;
             txtLocation.Text = location;
@@ -92,9 +78,9 @@ namespace SA44_Team10A_SportsFacBookingSystem
             btnBook.Enabled = false;
         }
 
+        //Handle member search during booking
         private void SearchMemberEventHandler(object sender, EventArgs e)
         {
-            
             String phoneNumber = txtMemPhoneNumber.Text;
             lblErrorLabel.Text = "";
             try
@@ -132,17 +118,14 @@ namespace SA44_Team10A_SportsFacBookingSystem
                 bookingTransaction.SlotTime = bookingDate;
                 bookingTransaction.Status = "Booked";
                 bookingTransaction.TransactionDate = System.DateTime.Now;
-
                 entityContext.BookingTransactions.Add(bookingTransaction);
                 entityContext.SaveChanges();
-                //RefreshDataGrid();
                 transactionStatus = "SUCCESS";
-                // Booking.ActiveForm.Close();
                 CloseEventHandler(sender, e);
             } catch(Exception exception)
             {
                 transactionStatus = "Failed";
-                lblErrorLabel.Text = exception.Message.ToString();
+                lblErrorLabel.Text = "Operation failed due to : "+exception.Message.ToString();
             }
         }
 
@@ -154,7 +137,7 @@ namespace SA44_Team10A_SportsFacBookingSystem
                  member = entityContext.Members.Where(x => x.MemberName == name).First();
             } catch(Exception exception)
             {
-                
+                lblErrorLabel.Text = "Operation failed due to : " + exception.Message.ToString();
             }
             return member;
         }
@@ -168,46 +151,11 @@ namespace SA44_Team10A_SportsFacBookingSystem
             }
             catch (Exception exception)
             {
-
+                lblErrorLabel.Text = "Operation failed due to : " + exception.Message.ToString();
             }
             return facility;
         }
 
-        public void RefreshDataGrid()
-        {
-            
-            BookingLayoutdatagridView.Refresh();
-            //Access each & every cell & Add colour to cells
-            for (int rowPosition = 0; rowPosition < Home.transactionsCount; rowPosition++)
-            {
-                foreach (DataGridViewCell cell in BookingLayoutdatagridView.Rows[rowPosition].Cells)
-                {
-                    try
-                    {
-                        //String cellcontent = cell.Value.ToString().Trim();
-
-                        String cellcontent = (cell.Value == null ? "0" : cell.Value.ToString());
-                        if (cellcontent.Equals("0"))
-                        {
-                            cell.Value = "Available";
-                            cell.Style.BackColor = Color.Green;
-
-                        }
-                        else if (cellcontent.Contains("-"))
-                        {
-                            cell.Value = "Booked";
-                            cell.Style.BackColor = Color.Red;
-                        }
-                        //  MessageBox.Show(c.Value.ToString());
-                    }
-                    catch (Exception exception)
-                    {
-
-                    }
-                }
-            }
-
-
-        }
+       
     }
 }
